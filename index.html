@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syllabus Tracker</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .header-title {
+            color: #0d6efd;
+            font-weight: 700;
+        }
+
+        .segment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #0d6efd;
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+        }
+
+        .segment-title {
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .progress-badge {
+            font-size: 1rem;
+            background-color: #198754;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .book-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            height: 100%;
+            border: 1px solid #e9ecef;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Completed Book Styles --- */
+        .book-card.is-read {
+            background-color: #f0fdf4;
+            border-color: #bbf7d0;
+        }
+
+        .book-card.is-read .book-title,
+        .book-card.is-read .book-writer,
+        .book-card.is-read .book-id-badge,
+        .book-card.is-read .page-count,
+        .book-card.is-read .pdf-link {
+            text-decoration: line-through;
+            color: #6c757d !important;
+            opacity: 0.8;
+        }
+
+        /* --------------------------- */
+
+        .card-body-custom {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-id-badge {
+            background: #e9ecef;
+            color: #495057;
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .book-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 10px 0;
+            color: #212529;
+            line-height: 1.4;
+            transition: all 0.3s;
+        }
+
+        .book-writer {
+            color: #6c757d;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px dashed #dee2e6;
+        }
+
+        .page-count {
+            font-size: 0.9rem;
+            color: #495057;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+        }
+
+        .pdf-link {
+            color: #dc3545;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+            transition: color 0.2s, text-decoration 0.3s;
+        }
+
+        .pdf-link:hover {
+            color: #b02a37;
+        }
+
+        .audio-container {
+            margin-top: 15px;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        audio {
+            width: 100%;
+            height: 35px;
+        }
+
+        .custom-checkbox {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .filter-bar {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .landing-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .svg-icon {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* Overall Progress bar for Syllabus A */
+        .overall-progress-container {
+            background: #fff;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="landing-page" class="container landing-container d-none">
+        <h1 class="mb-5 header-title text-center">সিলেবাস নির্বাচন করুন</h1>
+        <div class="d-flex gap-4 flex-wrap justify-content-center">
+            <a href="?syllabus=M" class="btn btn-primary btn-lg px-5 py-3 shadow-sm">
+                <svg class="svg-icon me-2" viewBox="0 0 16 16">
+                    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8z" />
+                </svg>
+                সদস্য মানোন্নয়ন সিলেবাস (M)
+            </a>
+            <a href="?syllabus=A" class="btn btn-success btn-lg px-5 py-3 shadow-sm">
+                <svg class="svg-icon me-2" viewBox="0 0 16 16">
+                    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8z" />
+                </svg>
+                সাথী সিলেবাস (A)
+            </a>
+        </div>
+    </div>
+
+    <div id="syllabus-page" class="container py-5 d-none">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 id="page-title" class="header-title m-0">Syllabus Tracker</h2>
+            <a href="index.html" class="btn btn-outline-secondary btn-sm">ফিরে যান</a>
+        </div>
+
+        <div id="overall-progress-wrapper" class="overall-progress-container d-none text-center">
+            <h5 class="mb-2 text-success fw-bold">মোট সিলেবাস কমপ্লিশন</h5>
+            <div class="progress" style="height: 25px;">
+                <div id="overall-progress-bar"
+                    class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar"
+                    style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+            </div>
+            <div id="overall-progress-text" class="mt-2 text-muted fw-bold">0 / 0 বই সম্পন্ন</div>
+        </div>
+
+        <div class="filter-bar row g-3 align-items-center">
+            <div class="col-md-4">
+                <label class="form-label fw-bold">লেখক ফিল্টার</label>
+                <select id="filter-writer" class="form-select">
+                    <option value="">সকল লেখক</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label fw-bold">সর্টিং (পৃষ্ঠা সংখ্যা অনুযায়ী)</label>
+                <select id="sort-pages" class="form-select">
+                    <option value="default">ডিফল্ট ক্রমানুসারে</option>
+                    <option value="asc">ছোট বই গুলো আগে দেখুন (কম থেকে বেশি)</option>
+                    <option value="desc">বড় বই গুলো আগে দেখুন (বেশি থেকে কম)</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label fw-bold d-block">&nbsp;</label>
+                <div class="form-check form-switch fs-5">
+                    <input class="form-check-input" type="checkbox" id="filter-audio">
+                    <label class="form-check-label fs-6 mt-1" for="filter-audio">শুধুমাত্র অডিও যুক্ত বই</label>
+                </div>
+            </div>
+        </div>
+
+        <div id="syllabus-content">
+            <div class="text-center py-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="mt-3">ডেটা লোড হচ্ছে...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="congratsModal" tabindex="-1" aria-labelledby="congratsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-success shadow-lg">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title fw-bold" id="congratsModalLabel">আলহামদুলিল্লাহ!</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center py-4">
+                    <h4 class="text-success mb-3">জাযাকাল্লাহু খাইরান প্রিয় ভাই!</h4>
+                    <p class="fs-5 mb-4">আপনি মোট সিলেবাস এর <strong class="fs-2 text-primary"><span
+                                id="modal-perc">0</span>%</strong> শেষ করেছেন।</p>
+                    <div class="fst-italic text-muted px-3"
+                        style="border-left: 4px solid #198754; background: #f8f9fa; padding: 10px;">
+                        "চেষ্টা যদি হয় সততা এবং নিষ্ঠা পুর্ণ, সাফল্য পুরোটা না আসুক কিছুটা হলেও আসবে।"
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center border-0">
+                    <button type="button" class="btn btn-success px-4" data-bs-dismiss="modal">চালিয়ে যান</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        // Icons
+        const icons = {
+            pdf: `<svg class="svg-icon" viewBox="0 0 16 16"><path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/><path d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"/></svg>`,
+            book: `<svg class="svg-icon" viewBox="0 0 16 16"><path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/></svg>`,
+            writer: `<svg class="svg-icon" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>`,
+            pages: `<svg class="svg-icon" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/><path d="M4.5 3h7V2h-7v1zM4 5h8v1H4V5zm0 2h8v1H4V7zm0 2h8v1H4V9zm0 2h5v1H4v-1z"/></svg>`,
+            audio: `<svg class="svg-icon text-primary" viewBox="0 0 16 16"><path d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"/><path fill-rule="evenodd" d="M9 3v10H8V3h1z"/><path d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"/></svg>`
+        };
+
+        let rawData = {};
+        let segments = {};
+        let syllabusType = '';
+        let storageKey = '';
+        let totalBooksCount = 0;
+
+        $(document).ready(function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            syllabusType = urlParams.get('syllabus');
+
+            if (!syllabusType) {
+                $('#landing-page').removeClass('d-none');
+            } else {
+                $('#syllabus-page').removeClass('d-none');
+                storageKey = `syllabus_progress_${syllabusType}`;
+
+                const fileName = syllabusType === 'M' ? 'SyllabusMN.json' : 'SyllabusAN.json';
+                const pageTitle = syllabusType === 'M' ? 'সদস্য মানোন্নয়ন সিলেবাস' : 'সাথী সিলেবাস';
+                $('#page-title').text(pageTitle);
+
+                fetch(fileName)
+                    .then(response => {
+                        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                        return response.json();
+                    })
+                    .then(data => {
+                        rawData = data;
+                        normalizeData();
+                        populateWriters();
+                        renderUI();
+                    })
+                    .catch(error => {
+                        console.error('Error fetching JSON:', error);
+                        $('#syllabus-content').html(`
+                            <div class="alert alert-danger text-center">
+                                <h4>ডেটা লোড করতে সমস্যা হয়েছে!</h4>
+                                <p>নিশ্চিত করুন যে <strong>${fileName}</strong> ফাইলটি এই HTML ফাইলের একই ফোল্ডারে আছে।</p>
+                            </div>
+                        `);
+                    });
+            }
+
+            // Filters
+            $('#filter-writer, #sort-pages, #filter-audio').on('change', function () {
+                renderUI();
+            });
+
+            // Checkbox Events
+            $(document).on('change', '.progress-check', function () {
+                const bookId = $(this).data('id');
+                const isChecked = $(this).is(':checked');
+
+                let progress = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+                if (isChecked) {
+                    if (!progress.includes(bookId)) progress.push(bookId);
+                    $(this).closest('.book-card').addClass('is-read');
+
+                    // Trigger Celebration & Modal
+                    showCelebration(progress.length);
+                } else {
+                    progress = progress.filter(id => id !== bookId);
+                    $(this).closest('.book-card').removeClass('is-read');
+                }
+
+                localStorage.setItem(storageKey, JSON.stringify(progress));
+                updateProgressUI(progress);
+            });
+        });
+
+        function normalizeData() {
+            segments = {};
+            totalBooksCount = 0;
+            if (Array.isArray(rawData.syllabus)) {
+                // Flat structure (SyllabusA)
+                segments['সকল বইসমূহ'] = rawData.syllabus;
+                totalBooksCount = rawData.syllabus.length;
+            } else {
+                // Nested structure (SyllabusM)
+                for (let key in rawData.syllabus) {
+                    let formattedKey = key.replace('step_', 'ধাপ ').toUpperCase();
+                    segments[formattedKey] = rawData.syllabus[key];
+                    totalBooksCount += rawData.syllabus[key].length;
+                }
+            }
+        }
+
+        function populateWriters() {
+            const writerCounts = {};
+            for (let seg in segments) {
+                segments[seg].forEach(book => {
+                    const w = book.writer_name ? book.writer_name.trim() : 'অজ্ঞাত';
+                    writerCounts[w] = (writerCounts[w] || 0) + 1;
+                });
+            }
+
+            const sortedWriters = Object.keys(writerCounts).sort();
+            const $writerSelect = $('#filter-writer');
+
+            sortedWriters.forEach(writer => {
+                // Add name and count: e.g. "Writer Name (5)"
+                $writerSelect.append(`<option value="${writer}">${writer} (${writerCounts[writer]})</option>`);
+            });
+        }
+
+        function getPageCountVal(val) {
+            if (!val) return 0;
+            if (typeof val === 'number') return val;
+            if (typeof val === 'string') {
+                return val.split(',').reduce((sum, num) => sum + (parseInt(num.trim()) || 0), 0);
+            }
+            return 0;
+        }
+
+        function updateProgressUI(progressArray) {
+            const readCount = progressArray.length;
+            const overallPerc = totalBooksCount > 0 ? Math.round((readCount / totalBooksCount) * 100) : 0;
+
+            if (syllabusType === 'A') {
+                // Show Global Progress Bar for Syllabus A
+                $('#overall-progress-wrapper').removeClass('d-none');
+                $('#overall-progress-bar').css('width', `${overallPerc}%`).text(`${overallPerc}%`);
+                $('#overall-progress-text').text(`${readCount} / ${totalBooksCount} বই সম্পন্ন`);
+            } else {
+                // Update Segment badges for Syllabus M
+                for (let segTitle in segments) {
+                    const segBooks = segments[segTitle];
+                    let segReadCount = 0;
+                    segBooks.forEach(b => {
+                        if (progressArray.includes(b.book_id)) segReadCount++;
+                    });
+                    const segPerc = segBooks.length > 0 ? Math.round((segReadCount / segBooks.length) * 100) : 0;
+
+                    // Update badge text if it exists
+                    const badgeId = `badge-${segTitle.replace(/\s+/g, '-')}`;
+                    $(`#${badgeId}`).text(`${segPerc}% সম্পন্ন`);
+                }
+            }
+        }
+
+        function showCelebration(readCount) {
+            const overallPerc = totalBooksCount > 0 ? Math.round((readCount / totalBooksCount) * 100) : 0;
+
+            // Set modal text
+            $('#modal-perc').text(overallPerc);
+
+            // Show modal
+            const modal = new bootstrap.Modal(document.getElementById('congratsModal'));
+            modal.show();
+
+            // Trigger Confetti
+            confetti({
+                particleCount: 150,
+                spread: 80,
+                origin: { y: 0.6 },
+                colors: ['#198754', '#0d6efd', '#ffc107', '#dc3545']
+            });
+        }
+
+        function renderUI() {
+            const $content = $('#syllabus-content');
+            $content.empty();
+
+            const selectedWriter = $('#filter-writer').val();
+            const sortMode = $('#sort-pages').val();
+            const mustHaveAudio = $('#filter-audio').is(':checked');
+            const progress = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+            let hasVisibleBooks = false;
+
+            for (let segTitle in segments) {
+                let filteredBooks = segments[segTitle].filter(book => {
+                    const currentWriter = book.writer_name ? book.writer_name.trim() : 'অজ্ঞাত';
+                    if (selectedWriter && currentWriter !== selectedWriter) return false;
+                    if (mustHaveAudio && !book.audio) return false;
+                    return true;
+                });
+
+                if (sortMode !== 'default') {
+                    filteredBooks.sort((a, b) => {
+                        const pA = getPageCountVal(a.page_count);
+                        const pB = getPageCountVal(b.page_count);
+                        if (sortMode === 'asc') return pA - pB;
+                        if (sortMode === 'desc') return pB - pA;
+                        return 0;
+                    });
+                }
+
+                if (filteredBooks.length > 0) {
+                    hasVisibleBooks = true;
+
+                    // HTML for Segment Title + Badge (for Syllabus M tracking)
+                    const badgeId = `badge-${segTitle.replace(/\s+/g, '-')}`;
+                    const headerHtml = `
+                        <div class="segment-header mt-4">
+                            <h3 class="segment-title">${segTitle}</h3>
+                            ${syllabusType === 'M' ? `<span id="${badgeId}" class="progress-badge">0% সম্পন্ন</span>` : ''}
+                        </div>
+                    `;
+                    $content.append(headerHtml);
+
+                    const $row = $('<div class="row g-4 mb-5"></div>');
+
+                    filteredBooks.forEach(book => {
+                        const isRead = progress.includes(book.book_id);
+                        const pageDisplay = book.page_count ? `${book.page_count} পৃষ্ঠা` : 'পৃষ্ঠা অজানা';
+
+                        let audioHtml = '';
+                        if (book.audio) {
+                            const audioLinks = book.audio.split(',');
+                            audioHtml = `<div class="audio-container mt-3">
+                                <div class="d-flex align-items-center mb-2 fw-bold text-primary">
+                                    ${icons.audio} <span class="ms-1">অডিও শুনুন</span>
+                                </div>`;
+                            audioLinks.forEach(link => {
+                                if (link.trim()) {
+                                    audioHtml += `<audio controls src="${link.trim()}" class="mb-1"></audio>`;
+                                }
+                            });
+                            audioHtml += `</div>`;
+                        }
+
+                        let pdfHtml = '';
+                        if (book.pdf_link) {
+                            const pdfLinks = book.pdf_link.split(',');
+                            pdfLinks.forEach((link, idx) => {
+                                if (link.trim()) {
+                                    const partText = pdfLinks.length > 1 ? ` (পর্ব ${idx + 1})` : '';
+                                    pdfHtml += `<a href="${link.trim()}" target="_blank" class="pdf-link mb-1">
+                                                    ${icons.pdf} ডাউনলোড${partText}
+                                                </a>`;
+                                }
+                            });
+                        } else {
+                            pdfHtml = `<span class="text-muted" style="font-size:0.9rem;">পিডিএফ নেই</span>`;
+                        }
+
+                        const cardHtml = `
+                            <div class="col-md-6 col-lg-4">
+                                <div class="book-card ${isRead ? 'is-read' : ''}">
+                                    <div class="card-body-custom">
+                                        <div class="d-flex justify-content-between align-items-start mb-2">
+                                            <span class="book-id-badge">ID: ${String(book.book_id).padStart(2, '0')}</span>
+                                            <input class="form-check-input custom-checkbox progress-check" 
+                                                type="checkbox" data-id="${book.book_id}" ${isRead ? 'checked' : ''} 
+                                                title="পড়া সম্পন্ন হয়েছে">
+                                        </div>
+                                        
+                                        <h4 class="book-title">
+                                            ${icons.book} ${book.book_name}
+                                        </h4>
+                                        <div class="book-writer">
+                                            ${icons.writer} ${book.writer_name || 'অজ্ঞাত'}
+                                        </div>
+                                        
+                                        <div class="meta-info">
+                                            <div class="page-count">
+                                                ${icons.pages} ${pageDisplay}
+                                            </div>
+                                            <div class="d-flex flex-column align-items-end">
+                                                ${pdfHtml}
+                                            </div>
+                                        </div>
+
+                                        ${audioHtml}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        $row.append(cardHtml);
+                    });
+
+                    $content.append($row);
+                }
+            }
+
+            if (!hasVisibleBooks) {
+                $content.html(`
+                    <div class="text-center py-5 text-muted">
+                        <svg class="svg-icon mb-3" style="width:48px;height:48px;" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
+                        </svg>
+                        <h4>কোনো বই পাওয়া যায়নি!</h4>
+                        <p>আপনার ফিল্টার পরিবর্তন করে আবার চেষ্টা করুন।</p>
+                    </div>
+                `);
+            }
+
+            // Initialize progress UI on render
+            updateProgressUI(progress);
+        }
+    </script>
+</body>
+
+</html>

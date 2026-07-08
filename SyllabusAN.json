@@ -1,0 +1,283 @@
+{
+    "syllabus": [
+        {
+            "book_id": 1,
+            "book_name": "কুরআন বুঝা সহজ",
+            "writer_name": "অধ্যাপক গোলাম আযম",
+            "link": "/read-book/573",
+            "pdf_link": "https://shibircloud.com/pdf/quran_bujha_sohoj_v2.pdf",
+            "audio": null,
+            "page_count": 50
+        },
+        {
+            "book_id": 2,
+            "book_name": "হাদীসের পরিচয়",
+            "writer_name": "জিলহজ আলী",
+            "link": "/read-book/197",
+            "pdf_link": "https://shibircloud.com/pdf/hadiser_poricoy_v2.pdf",
+            "audio": null,
+            "page_count": 81
+        },
+        {
+            "book_id": 3,
+            "book_name": "সংবিধান",
+            "writer_name": "বিআইসিএস",
+            "link": "/read-book/28",
+            "pdf_link": "https://shibircloud.com/pdf/songbidhan.pdf",
+            "audio": null,
+            "page_count": 40
+        },
+        {
+            "book_id": 4,
+            "book_name": "কর্মপদ্ধতি",
+            "writer_name": "বিআইসিএস",
+            "link": "/read-book/27",
+            "pdf_link": "https://shibircloud.com/pdf/kormopoddhoti_v2.pdf",
+            "audio": null,
+            "page_count": 50
+        },
+        {
+            "book_id": 5,
+            "book_name": "চরিত্র গঠনের মৌলিক উপাদান",
+            "writer_name": "নঈম সিদ্দিকী",
+            "link": "/read-book/32",
+            "pdf_link": "https://shibircloud.com/pdf/coritro_gothoner_mowlik_upadan_v2.pdf",
+            "audio": "http://shibircloud.com/audio/lq/choritro_gothoner_moulik_upadan.mp3",
+            "page_count": 34
+        },
+        {
+            "book_id": 6,
+            "book_name": "মৃত্যু যবনিকার ওপারে",
+            "writer_name": "আব্বাস আলী খান",
+            "link": "/read-book/256",
+            "pdf_link": "https://shibircloud.com/pdf/mrittu_jobonikar_opare_v2.pdf",
+            "audio": null,
+            "page_count": 141
+        },
+        {
+            "book_id": 7,
+            "book_name": "যাকাতের হাকীকত",
+            "writer_name": "সাইয়্যেদ আবুল আ'লা মওদূদী",
+            "link": "/read-book/260",
+            "pdf_link": "http://shibircloud.com/pdf/zakater_hakikot_v2.pdf",
+            "audio": "http://shibircloud.com/audio/lq/zakater_hakikot.mp3",
+            "page_count": 49
+        },
+        {
+            "book_id": 8,
+            "book_name": "জীবন্ত নামাজ",
+            "writer_name": "অধ্যাপক গোলাম আযম",
+            "link": "/pdf-book/703",
+            "pdf_link": "https://shibircloud.com/pdf/jibonto_namaj.pdf",
+            "audio": null,
+            "page_count": 32
+        },
+        {
+            "book_id": 9,
+            "book_name": "ইসলামে ইবাদতের পরিধি",
+            "writer_name": "ড. ইউসুফ আল কারযাভী",
+            "link": "/read-book/745",
+            "pdf_link": "https://shibircloud.com/pdf/islame_ibadoter_poridhi.pdf",
+            "audio": null,
+            "page_count": 68
+        },
+        {
+            "book_id": 10,
+            "book_name": "পর্দার আসল রূপ",
+            "writer_name": "এ.কে.এম. নাজির আহমদ",
+            "link": "/read-book/267",
+            "pdf_link": "https://shibircloud.com/pdf/pordar_ashol_rup_v2.pdf",
+            "audio": null,
+            "page_count": 27
+        },
+        {
+            "book_id": 11,
+            "book_name": "শিক্ষা ব্যবস্থার ইসলামী রূপরেখা",
+            "writer_name": "অধ্যাপক গোলাম আযম",
+            "link": "/read-book/264",
+            "pdf_link": "https://shibircloud.com/pdf/shikkha_babosthar_islami_ruprekha_v2.pdf",
+            "audio": null,
+            "page_count": 22
+        },
+        {
+            "book_id": 12,
+            "book_name": "ইসলামী রাষ্ট্র ব্যবস্থা",
+            "writer_name": "ড. আবদুল করিম জায়দান",
+            "link": "/read-book/31",
+            "pdf_link": "https://shibircloud.com/pdf/islami_rastro_bebostha_v2.pdf",
+            "audio": null,
+            "page_count": 84
+        },
+        {
+            "book_id": 13,
+            "book_name": "ইসলামের স্বর্ণযুগে সামাজিক ন্যায়-নীতি",
+            "writer_name": "সাইয়েদ কুতুব",
+            "link": "/read-book/266",
+            "pdf_link": "https://shibircloud.com/pdf/islamer_shornojuge_samajik_nayniti_v2.pdf",
+            "audio": null,
+            "page_count": 110
+        },
+        {
+            "book_id": 14,
+            "book_name": "আমাদের দাওয়াত; জীবনবিধান ইসলাম",
+            "writer_name": "ড. ইউসুফ আল কারযাভী",
+            "link": "/read-book/728",
+            "pdf_link": "https://shibircloud.com/pdf/amader_daoyat_jibonbidhan_islam.pdf",
+            "audio": null,
+            "page_count": 178
+        },
+        {
+            "book_id": 15,
+            "book_name": "অর্থনীতিতে রাসূলের (সাঃ) দশ দফা",
+            "writer_name": "শাহ মুহাম্মদ হাবীবুর রহমান",
+            "link": "/read-book/265",
+            "pdf_link": "https://shibircloud.com/pdf/orthonitite_rasuler_sm_10_dofa_v2.pdf",
+            "audio": null,
+            "page_count": 45
+        },
+        {
+            "book_id": 16,
+            "book_name": "গণতন্ত্র ইসলামী দৃষ্টিকোণ",
+            "writer_name": "ড. আহমদ আলী",
+            "link": "",
+            "pdf_link": "",
+            "audio": null,
+            "page_count": null
+        },
+        {
+            "book_id": 17,
+            "book_name": "সেকুলারিজম প্রশ্ন",
+            "writer_name": "ফাহমিদ-উর-রহমান",
+            "link": "/read-book/738",
+            "pdf_link": "https://shibircloud.com/pdf/Secularism_proshno.pdf",
+            "audio": null,
+            "page_count": 145
+        },
+        {
+            "book_id": 18,
+            "book_name": "ইসলামী রাষ্ট্র কিভাবে প্রতিষ্ঠিত হয়",
+            "writer_name": "সাইয়্যেদ আবুল আ'লা মওদূদী",
+            "link": "/read-book/282",
+            "pdf_link": "https://shibircloud.com/pdf/Islami_rastro_kivabe_protisthito_hoy.pdf",
+            "audio": "http://shibircloud.com/audio/lq/islami_biplober_poth.mp3",
+            "page_count": 50
+        },
+        {
+            "book_id": 19,
+            "book_name": "ইসলামী আন্দোলন সাফল্যের শর্তাবলী",
+            "writer_name": "সাইয়ে‍্যদ আবুল আ'লা মওদূদী",
+            "link": "/read-book/283",
+            "pdf_link": "https://shibircloud.com/pdf/islami_andolon_safoller_sortaboli_v2.pdf",
+            "audio": "http://shibircloud.com/audio/lq/islami_andolon_safoller_shortaboli.mp3",
+            "page_count": 70
+        },
+        {
+            "book_id": 20,
+            "book_name": "সত্যের সাক্ষ্য",
+            "writer_name": "সাইয়্যেদ আবুল আ'লা মওদুদী",
+            "link": "/read-book/284",
+            "pdf_link": "https://shibircloud.com/pdf/sotter_sakkho_v2.pdf",
+            "audio": "http://shibircloud.com/audio/lq/shotter_shakkho.mp3",
+            "page_count": 42
+        },
+        {
+            "book_id": 21,
+            "book_name": "ইসলামী আন্দোলন ও সংগঠন",
+            "writer_name": "মাওলানা মতিউর রহমান নিজামী",
+            "link": "/read-book/300",
+            "pdf_link": "https://shibircloud.com/pdf/islami_andolon_o_songothon_v2.pdf",
+            "audio": "http://shibircloud.com/audio/lq/islami_andolon_o_songgothon.mp3",
+            "page_count": 114
+        },
+        {
+            "book_id": 22,
+            "book_name": "ইসলামী আন্দোলনের কর্মীদের পারস্পরিক সম্পর্ক",
+            "writer_name": "খুররম জাহ মুরাদ",
+            "link": "/read-book/296",
+            "pdf_link": "https://shibircloud.com/pdf/islami_andoloner_kormider_parosporik_somporko_v2.pdf",
+            "audio": "http://shibircloud.com/audio/lq/islami_andoloner_kormider_parosparik_somporko.mp3",
+            "page_count": 98
+        },
+        {
+            "book_id": 23,
+            "book_name": "ইকামতে দ্বীন",
+            "writer_name": "অধ্যাপক গোলাম আযম",
+            "link": "/read-book/261",
+            "pdf_link": "https://shibircloud.com/pdf/Ikamate_din_v2.pdf",
+            "audio": "http://shibircloud.com/audio/lq/ikamate_din.mp3",
+            "page_count": 89
+        },
+        {
+            "book_id": 24,
+            "book_name": "মুসলিম বিশ্ব ইসলামী আন্দোলনের কর্মপন্থা",
+            "writer_name": "সাইয়্যেদ আবুল আ'লা মওদূদী",
+            "link": "/read-book/429",
+            "pdf_link": "http://shibircloud.com/pdf/muslim_bishwe_islami_andoloner_kormopontha.pdf",
+            "audio": null,
+            "page_count": 17
+        },
+        {
+            "book_id": 25,
+            "book_name": "আসান ফেকাহ (১ম ও ২য় খন্ড)",
+            "writer_name": "মাওলানা ইউসুফ ইসলাহী",
+            "link": "/read-book/253, /read-book/280",
+            "pdf_link": "https://shibircloud.com/pdf/asan_fekah_01_v2.pdf, https://shibircloud.com/pdf/asan_fekah_02_v2.pdf",
+            "audio": null,
+            "page_count": "330, 254"
+        },
+        {
+            "book_id": 26,
+            "book_name": "রাসুলুল্লাহর বিপ্লবী জীবন",
+            "writer_name": "আবু সলিম মুহাম্মদ আব্দুল হাই",
+            "link": "/read-book/297",
+            "pdf_link": "https://shibircloud.com/pdf/rasulullahr_sm_biplobi_jibon_v2.pdf",
+            "audio": null,
+            "page_count": 177
+        },
+        {
+            "book_id": 27,
+            "book_name": "আসহাবে রাসূলের জীবন কথা (১ম খন্ড)",
+            "writer_name": "আবদুল মাবুদ",
+            "link": "/pdf-book/705",
+            "pdf_link": "https://shibircloud.com/pdf/ashabe_rasuler_jibon_kotha_1_v2.pdf",
+            "audio": null,
+            "page_count": 221
+        },
+        {
+            "book_id": 28,
+            "book_name": "কারাগারে রাতদিন",
+            "writer_name": "জয়নাব আল গাজ্জালী",
+            "link": "/read-book/299",
+            "pdf_link": "https://shibircloud.com/pdf/karagare_ratdin_v2.pdf",
+            "audio": null,
+            "page_count": 256
+        },
+        {
+            "book_id": 29,
+            "book_name": "আমাদের জাতিসত্তার বিকাশ ধারা",
+            "writer_name": "মো: আব্দুল মান্নান",
+            "link": "/read-book/339",
+            "pdf_link": "https://shibircloud.com/pdf/amader_jatisottar_bikash_dhara_v2.pdf",
+            "audio": null,
+            "page_count": 203
+        },
+        {
+            "book_id": 30,
+            "book_name": "সুবহে সাদিক",
+            "writer_name": "খুররম জাহ মুরাদ",
+            "link": "/pdf-book/378",
+            "pdf_link": "https://shibircloud.com/pdf/subhe_sadik_v2.pdf",
+            "audio": null,
+            "page_count": 147
+        },
+        {
+            "book_id": 31,
+            "book_name": "ক্যারিয়ার বিকশিত জীবনের দ্বার",
+            "writer_name": "আইসিএস পাবলিকেশন",
+            "link": "/read-book/248",
+            "pdf_link": "https://shibircloud.com/pdf/Career_bikoshito_jiboner_dhar_v2.pdf",
+            "audio": null,
+            "page_count": 315
+        }
+    ]
+}
